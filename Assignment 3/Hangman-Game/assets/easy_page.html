@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Matthew's Hangman Game!</title>
+	<!-- Latest compiled and minified CSS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Added link to the jQuery Library -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+</head>
+
+<body>
+
+<style>
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 1rem;
+      background-color: #efefef;
+      text-align: center;
+    }
+    #a, #b, #c, #d, #e, #f, #g, #h, #i, #j, #k, #l, #m, #n, #o, #p, #q, #r, #s, #t, #u, #v, #w, #x, #y, #z {
+      border-style: groove;
+      border-width: 1px;
+    }
+    #letters1, #letters2, #letters3 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #a:hover {
+      background-color: #8bd;
+      color: white;
+
+    }
+    #b:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #c:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #d:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #e:hover {
+      background-color: #8bd;
+      color: white;
+    }   
+    #f:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #g:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #h:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #i:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #j:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #k:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #l:hover {
+      background-color: #8bd;
+      color: white;
+    }    
+    #m:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #n:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #o:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #p:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #q:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #r:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #s:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #t:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #u:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #v:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #w:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #x:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #y:hover {
+      background-color: #8bd;
+      color: white;
+    }
+    #z:hover {
+      background-color: #8bd;
+      color: white;
+    }
+</style>
+
+  <!-- Nav bar -->
+	<nav class="navbar navbar-inverse" style="background-color: #346ead">
+		<div class="container-fluid">
+			<!--Logo! -->	
+			<div class="navbar-header">
+       <a href="index.html">
+			   <img src="http://oi63.tinypic.com/2ltg6dw.jpg" style= "width: 200px; height: 80px">
+       </a>
+			</div>
+		</div>
+	</nav>
+
+
+  <!-- Easy page content -->
+
+<div class="container-fluid text-center bg-grey">
+  	<h2><strong>Video Game Hangman</strong></h2>
+  <div class="row text-center">
+    <div class = "col-sm-6"> 
+      <div class="thumbnail">
+        <div id="pic">
+          <img id="gameHint" style="width: 375px; height: 275px">
+        </div>
+        <p><strong>Here's your hint!</strong></p>
+      </div>
+    </div>
+    <div class="col-sm-6" id="gameBox" style="height: 345px">
+      <h3><strong>Guess This Game Title!</strong></h3>
+      <h4 id="parent"><strong>(You get 5 tries...)</strong></h4>
+    </div>
+  </div>
+
+  <div class="row text-center" style="margin:10px">
+    <div id="letters1">
+      <div class = "col-sm-1">
+        <div id="a">A</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="b">B</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="c">C</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="d">D</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="e">E</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="f">F</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="g">G</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="h">H</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="i">I</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="j">J</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="k">K</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="l">L</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center" style="margin: 10px">
+    <div id="letters2">
+      <div class = "col-sm-1">
+        <div id="m">M</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="n">N</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="o">O</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="p">P</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="q">Q</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="r">R</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="s">S</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="t">T</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="u">U</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="v">V</div>
+      </div>
+      <div class = "col-sm-1">
+        <div id="w">W</div>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center" style="margin: 10px">
+    <div id="letters3">
+      <div class = "col-sm-4">
+        <div id="x">X</div>
+      </div>
+      <div class = "col-sm-4">
+        <div id="y">Y</div>
+      </div>
+      <div class = "col-sm-4">
+        <div id="z">Z</div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+  //--------------------------------------------------------------------------------------------------------------------------
+                //functions, variables, and arrays...
+  //--------------------------------------------------------------------------------------------------------------------------
+  $(document).ready(function() {
+
+  //interger equal to the number of tries the player gets...
+  var numOfTries = 5;
+
+  //function gives you a random number in between the min and max...
+  //javascript really needs a native range function like Python...
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  var i = getRandomInt(0,7);
+  
+  //gameNames is the string you're guessing, and imageAddress gives the player a visual hint...
+  var imageAddress = [
+    "images/easy/bioshock.jpg", //number 0
+    "images/easy/fallout.jpg", //number 1
+    "images/easy/majora.jpg", //number 2
+    "images/easy/mario.png", //number 3
+    "images/easy/metroid.jpg", //number 4 
+    "images/easy/portal.jpg", //number 5
+    "images/easy/residentevil.jpg", //number 6
+    ];
+  var gameNames = [
+    "bioshock", //number 0
+    "fallout", //number 1
+    "majorasmask", //number 2
+    "mario", //number 3
+    "metroid", // number 4 
+    "portal", // number 5
+    "residentevil" // number 6
+    ];
+ 
+  //assigns the path from my imageAddress array, renders in the id#gameHint...
+  var gamePic = $("#gameHint");
+  gamePic.attr("src", imageAddress[i]);
+
+  var thisGame = gameNames[i];
+  var nameLength = 0;
+
+//--------------------------------------------------------------------------------------------------------------------------
+                //Virtual Keyboard
+//--------------------------------------------------------------------------------------------------------------------------
+
+  //I know I should have done this more efficiently, 
+  //If I click on this letter, this code will...
+
+  $("#a").on("click", function() {
+
+      //checks if this letter is found in the string. 
+      //if nameLength reaches thisGame.length, the game is over...
+      var checker = thisGame.includes("a");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an A!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+      }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No A! " + numOfTries + " tries left!</div>");
+      };
+      //if you guess 5 wrong letters, You LOSE!
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+      if (nameLength==thisGame.length) {
+        $("#parent").append("<div>You Win! " + thisGame + " is the game!</div>");
+      };
+    });
+  $("#b").on("click", function() {
+
+      var checker = thisGame.includes("b");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an B!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No B!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#c").on("click", function() {
+      var checker = thisGame.includes("c");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an C!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No C!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#d").on("click", function() {
+      var checker = thisGame.includes("d");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an D!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No D!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#e").on("click", function() {
+      var checker = thisGame.includes("e");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an E!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No E!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#f").on("click", function() {
+      var checker = thisGame.includes("f");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an F!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No F!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#g").on("click", function() {
+      var checker = thisGame.includes("g");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an G!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No G!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#h").on("click", function() {
+      var checker = thisGame.includes("h");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an H!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No H!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#i").on("click", function() {
+      var checker = thisGame.includes("i");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an I!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No I!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#j").on("click", function() {
+      var checker = thisGame.includes("j");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an J!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No J!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#k").on("click", function() {
+      var checker = thisGame.includes("k");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an K!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No K!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#l").on("click", function() {
+      var checker = thisGame.includes("l");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an L!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No L!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#m").on("click", function() {
+      var checker = thisGame.includes("m");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an M!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No M!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#n").on("click", function() {
+      var checker = thisGame.includes("n");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an N!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No N!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#o").on("click", function() {
+      var checker = thisGame.includes("o");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an O!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No O!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#p").on("click", function() {
+      var checker = thisGame.includes("p");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an P!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No P!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#q").on("click", function() {
+      var checker = thisGame.includes("q");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an Q!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No Q!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#r").on("click", function() {
+      var checker = thisGame.includes("r");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an R!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No R!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#s").on("click", function() {
+      var checker = thisGame.includes("s");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an S!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No S!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#t").on("click", function() {
+      var checker = thisGame.includes("t");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an T!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No T!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#u").on("click", function() {
+      var checker = thisGame.includes("u");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an U!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No U!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#v").on("click", function() {
+      var checker = thisGame.includes("v");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an V!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No V!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#w").on("click", function() {
+      var checker = thisGame.includes("w");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an W!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No W!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });  
+  $("#x").on("click", function() {
+      var checker = thisGame.includes("x");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an X!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No X!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#y").on("click", function() {
+      var checker = thisGame.includes("y");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an Y!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No Y!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+  $("#z").on("click", function() {
+      var checker = thisGame.includes("z");
+
+      if (checker == true) {
+        $("#parent").append("<div>Yes! There is an Z!</div>");
+        nameLength+=1;
+        //alert("You've gotten " + nameLength + " letters!");
+        }
+      else {
+        numOfTries-=1;
+        $("#parent").append("<div>Nope! No Z!" + numOfTries + " tries left!</div>");
+      };
+      if (numOfTries == 0) {
+        $("#parent").append("<div>You LOSE! GTFO!</div>");
+      };
+    });
+
+  });
+
+  </script>
+
+<footer class="container-fluid text-center" style="background-color: 
+#285586">
+  <p>Copyright 2017 Matthew Reid</p>
+</footer>
+
+</body>
+</html>
